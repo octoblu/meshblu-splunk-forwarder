@@ -3,18 +3,24 @@ SplunkLogger = require '../splunk-logger.coffee'
 describe 'SplunkLogger', ->
   beforeEach ->
 
-    options =
-      splunkOptions
-        username: username,
-        password: password,
-        scheme: scheme,
-        host: host,
-        port: port,
-        version: version
+    @options = {
+      username: ''
+      password: 'password'
+      scheme: 'scheme'
+      host: 'host'
+      port: 'port'
+      version: 'version'
+    }
 
-    @sut = new SplunkLogger options
+    @dependencies =
+      splunkService :
+        login : sinon.spy()
 
-  describe 'it exists', ->
-    @login
+    @sut = new SplunkLogger @options, @dependencies
 
-  describe "when given splunk credentials, it calls the service's login", ->
+  it 'should exist', ->
+    expect(@sut).to.exist
+
+
+  it 'should call the splunkService.login in the constructor', ->
+    expect(@dependencies.splunkService.login).to.have.been.called
