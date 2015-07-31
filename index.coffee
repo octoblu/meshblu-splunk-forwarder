@@ -1,15 +1,18 @@
 config = require './meshblu.json'
-splunkConfig = require './'
+splunkConfig = require './.splunkrc.json'
 Meshblu = require 'meshblu-websocket'
-Splunk = require './splunk-logger'
+SplunkLogger = require './splunk-logger'
 
 meshbluClient = new Meshblu(config)
-splunkLogger = new Splunk(splunkConfig)
+splunkLogger = new SplunkLogger(splunkConfig)
 
-console.log('splunkConfig', splunkConfig)
+splunkLogger.login (error, success) ->
+  splunkConnected = if splunkConnected? then false
 
-meshbluClient.register()
-meshbluClient.on 'message', (message) =>
-  #Send this data to Splunk
-  #need splunk-logger.coffee - connects to splunk
-  # takes options (creds, etc)
+meshbluClient.connect (error, meshbluConnection) =>
+  console.log 'connected to meshblu!'
+
+     #retry connection or disconnect from meshblu
+  meshbluClient.on 'message', (message) =>
+     if splunkConnected
+       splunkLogger.log message, (error, result) ->
