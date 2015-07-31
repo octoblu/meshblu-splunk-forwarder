@@ -10,7 +10,7 @@ splunkLogger.login (error, success) ->
   splunkConnected = if splunkConnected? then false
 
 meshbluClient.connect (error, meshbluConnection) =>
-  console.log 'connected to meshblu!'
+  debug 'connected to meshblu!'
 
      #retry connection or disconnect from meshblu
   meshbluClient.on 'message', (message) =>
