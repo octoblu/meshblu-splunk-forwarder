@@ -14,7 +14,7 @@ meshbluClient.connect (error) =>
   if error
     debug 'Could not connect to meshblu!'
   else
-    console.log "I'm using uuid:", config.uuid
+    console.log "I'm uuid:", config.uuid
     meshbluClient.subscribe config.uuid
     debug 'connected to meshblu!'
     debug 'meshbluClient', @
