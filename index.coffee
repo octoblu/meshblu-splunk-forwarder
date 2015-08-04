@@ -17,11 +17,10 @@ meshbluClient.connect (error) =>
     console.log "I'm uuid:", config.uuid
     meshbluClient.subscribe config.uuid
     debug 'connected to meshblu!'
-    debug 'meshbluClient', @
 
 meshbluClient.on 'message', (frame) =>
   console.log 'message received', frame
   splunkLogger.log frame, (err, result) ->
     if err
       console.error err
-    console.log 'looks good', result
+    console.log 'result', result
