@@ -12,15 +12,18 @@ splunkLogger.login (error, success) ->
 
 meshbluClient.connect (error) =>
   if error
-    debug 'Could not connect to meshblu!'
+    throw new Error('Could not connect to Meshblu')
   else
-    console.log "I'm uuid:", config.uuid
     meshbluClient.subscribe config.uuid
-    debug 'connected to meshblu!'
+    debug "I'm uuid:", config.uuid
+    console.log 'Connected to Meshblu...'
 
-meshbluClient.on 'message', (frame) =>
-  console.log 'message received', frame
-  splunkLogger.log frame, (err, result) ->
-    if err
-      console.error err
-    console.log 'result', result
+meshbluClient.on 'message', (message) =>
+  debug 'message received', message
+  splunkLogger.log message, (error, result) ->
+    if error
+      return new Error()
+    debug 'result', result
+
+meshbluClient.on 'error', =>
+  throw new Error('Could not connect to Meshblu')
