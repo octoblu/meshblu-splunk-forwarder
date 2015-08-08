@@ -7,18 +7,15 @@ Meshblu devices contain lots of valuable data. Often times, you may want to anal
 ## Install
 1. First, create a [splunk config file](http://dev.splunk.com/view/javascript-sdk/SP-CAAAEFM).
 
-1. Now, we'll need to pull down [Meshblu](https://github.com/octoblu/meshblu):
-
+2. Now, we'll need to pull down [Meshblu](https://github.com/octoblu/meshblu):
   - `mkdir meshblu && cd $_`
   - `npm install meshblu`
 
-1. Also, let's pull down the Meshblu Splunk Forwarder:
-
+3. Also, let's pull down the Meshblu Splunk Forwarder:
   - `mkdir && cd $_`
   - `npm install meshblu-splunk-forwarder`
 
-1. In order to more easily create a Meshblu device -- which is just a JSON object -- we'll use [Meshblu Util](https://github.com/octoblu/meshblu-util):
-
+4. In order to more easily create a Meshblu device -- which is just a JSON object -- we'll use [Meshblu Util](https://github.com/octoblu/meshblu-util):
   - `npm install -g meshblu-util`
 
 ## Setup
