@@ -76,7 +76,7 @@ Also in the sample device directory, let's create a `message.json` file -- a pre
 ## Usage
 Now that we've installed packages and set-up devices, let's use 'em.
 
-Open up a terminal, navigate to your meshblu director to run meshblu with the following command:
+Open up a terminal, navigate to your meshblu directory to run meshblu with the following command:
 
 `FORWARD_EVENT_DEVICES={ENTER-SPLUNK-FORWARDER-UUID} nodemon server.js --http`
 
